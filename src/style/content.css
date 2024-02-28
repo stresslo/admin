@@ -26,6 +26,7 @@
     align-items: center;
     gap: 15px;
 }
+
 .notification-wrap.show {
     opacity: 1;
     animation: showwrap 0.75s linear;
