@@ -46,7 +46,7 @@ const Login = () => {
             <Topback/>
             <div className="login-box">
                 <div className="login-top">
-                    <div className="title"><span>Vixcera</span></div>
+                    <div className="title"><span>stresslo</span></div>
                     <p className="desc">Free assets to make your <span>work easier.</span></p>
                 </div>
                 <form className="login-input" onSubmit={handleLogin}>

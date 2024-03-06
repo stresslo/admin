@@ -69,7 +69,7 @@ const Wetails = () => {
         <>
         {(status !== 200) && (<div className="page"><Handle status={status}/></div>)}
         <div className='page-max'>
-            <div className="back" onClick={() => navigate(-1)}>
+            <div className="back" onClick={() => navigate('/products')}>
                 <div className="fa-solid fa-arrow-left fa-xl active"></div>
                 <div className="nav-logo" style={{fontFamily: 'var(--caveat)'}}>Vixcera</div>
             </div>
