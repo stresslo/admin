@@ -40,6 +40,20 @@ const Products = () => {
 
     if (status !== 200) return (
         <div style={{marginTop: '80px'}}>
+            <div className='form' style={{marginTop: '10px'}}>
+                    <div className='input-form'>
+                    <div>
+                    <div>Category :</div>
+                        <select style={{width: '100%', textAlign: 'center'}} value={ctg} onChange={(e) => setCtg(e.target.value)} required>
+                            <option value="">-- CATEGORY --</option>
+                            <option value="Web">Web</option>
+                            <option value="3D">3D</option>
+                            <option value="Motion">Motion</option>
+                            <option value="Vector">Vector</option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
             <Handle status={status}/>
         </div>
     )
