@@ -12,7 +12,7 @@ const Content = () => {
     const path = location.pathname
     const navigate = useNavigate()
     const context = useContext(Context)
-    const token = localStorage.getItem('token')
+    const token = sessionStorage.getItem('token')
 
     useEffect(() => {if (!token) return navigate('/login')} ,[])
 
