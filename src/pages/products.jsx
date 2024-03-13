@@ -35,7 +35,7 @@ const Products = () => {
     };
 
     useEffect(() => { 
-        if (!data.length) {checkAdmin()} 
+        checkAdmin()
     }, [path, ctg])
 
     return (
@@ -47,7 +47,7 @@ const Products = () => {
         )}
         <div className='product-page'>
             <div className='product-container' style={{flexDirection: 'column'}}>
-                <div className='form'>
+                <div className='form' style={{marginTop: '10px'}}>
                     <div className='input-form'>
                     <div>
                     <div>Category :</div>
@@ -62,7 +62,7 @@ const Products = () => {
                     </div>
                 </div>
                 {(loading) ? (<Swaload.Product/>) : 
-                data && 
+                data.length != 0 && 
                 data.map((i, k) => {
                         return(
                         <div className='product-card' key={k}>
