@@ -5,12 +5,16 @@ import Products from "../pages/products"
 import Handle from "../../service/handle"
 import Context from "../../utils/context"
 import "../style/content.css"
+import { useEffect } from "react"
 
 const Content = () => {
 
     const path = location.pathname
     const navigate = useNavigate()
     const context = useContext(Context)
+    const token = localStorage.getItem('token')
+
+    useEffect(() => {if (!token) return navigate('/login')} ,[])
 
     return (
         <div className="content">
@@ -18,7 +22,6 @@ const Content = () => {
             {(path == '/') && <div style={{marginTop: '80px'}}><Handle status={404}/></div>}
             {(path == '/about') && <div style={{marginTop: '80px'}}><Handle status={404}/></div>}
             {(path == '/products') && <Products/>}
-            
         </div>
     )
 }
