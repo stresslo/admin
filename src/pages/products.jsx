@@ -36,7 +36,7 @@ const Products = () => {
 
     useEffect(() => { 
         if (!data.length) {checkAdmin()} 
-    }, [path])
+    }, [path, ctg])
 
     return (
         <>
@@ -46,18 +46,20 @@ const Products = () => {
             </div>
         )}
         <div className='product-page'>
-            <div className='product-container'>
-                <div className='input-form'>
-                <div>
-                <div>Category :</div>
-                    <select style={{width: '100%', textAlign: 'center'}} value={ctg} onChange={(e) => setCtg(e.target.value)} required>
-                        <option value="">-- CATEGORY --</option>
-                        <option value="Web">Web</option>
-                        <option value="3D">3D</option>
-                        <option value="Motion">Motion</option>
-                        <option value="Vector">Vector</option>
-                    </select>
-                </div>
+            <div className='product-container' style={{flexDirection: 'column'}}>
+                <div className='form'>
+                    <div className='input-form'>
+                    <div>
+                    <div>Category :</div>
+                        <select style={{width: '100%', textAlign: 'center'}} value={ctg} onChange={(e) => setCtg(e.target.value)} required>
+                            <option value="">-- CATEGORY --</option>
+                            <option value="Web">Web</option>
+                            <option value="3D">3D</option>
+                            <option value="Motion">Motion</option>
+                            <option value="Vector">Vector</option>
+                        </select>
+                    </div>
+                    </div>
                 </div>
                 {(loading) ? (<Swaload.Product/>) : 
                 data && 
