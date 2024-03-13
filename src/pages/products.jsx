@@ -36,7 +36,7 @@ const Products = () => {
     };
 
     useEffect(() => { 
-        if (token) {
+        if (token != 'undefined') {
             localStorage.setItem('ctg', ctg)
             checkAdmin()
         }
