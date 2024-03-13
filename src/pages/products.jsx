@@ -36,8 +36,10 @@ const Products = () => {
     };
 
     useEffect(() => { 
-        localStorage.setItem('ctg', ctg)
-        checkAdmin()
+        if (token) {
+            localStorage.setItem('ctg', ctg)
+            checkAdmin()
+        }
     }, [path, ctg])
 
     if (status !== 200) return (
