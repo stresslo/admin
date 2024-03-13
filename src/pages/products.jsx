@@ -36,6 +36,7 @@ const Products = () => {
     };
 
     useEffect(() => { 
+        localStorage.setItem('ctg', ctg)
         checkAdmin()
     }, [path, ctg])
 
