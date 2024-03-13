@@ -29,6 +29,7 @@ const Products = () => {
             })
             if (!response.data.length) return setStatus(404)
             setData(response.data)
+            setStatus(200)
         } catch (error) {
             if (error || error.response) return setStatus(404)
         } finally {setLoading(false)}
@@ -39,7 +40,7 @@ const Products = () => {
     }, [path, ctg])
 
     if (status !== 200) return (
-        <div style={{marginTop: '80px'}}>
+        <div style={{marginTop: '10px'}}>
             <div className='form' style={{marginTop: '10px'}}>
                     <div className='input-form'>
                     <div>
