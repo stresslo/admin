@@ -40,7 +40,7 @@ const Products = () => {
     }, [path, ctg])
 
     if (status !== 200) return (
-        <div style={{marginTop: '10px'}}>
+        <div style={{marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>
             <div className='form' style={{marginTop: '10px'}}>
                     <div className='input-form'>
                     <div>
@@ -61,7 +61,7 @@ const Products = () => {
 
     return (
         <>
-        <div className='product-page' style={{marginTop: '10px'}}>
+        <div className='product-page' style={{marginTop: '10px', paddingTop: '0px'}}>
             <div className='product-container' style={{flexDirection: 'column'}}>
                 <div className='form' style={{marginTop: '10px'}}>
                     <div className='input-form'>
