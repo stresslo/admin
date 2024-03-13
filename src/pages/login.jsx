@@ -15,6 +15,7 @@ const Login = () => {
     const context = useContext(Context)
     const refemail = localStorage.getItem('email')
     const url = `${import.meta.env.VITE_API}/login/admin`
+    const token = sessionStorage.getItem('token')
 
     const [vxsrf, setVxsrf]       = useState('')
     const [email, setEmail]       = useState((refemail) ? refemail : '')
@@ -43,7 +44,7 @@ const Login = () => {
 
     return(
         <div className="page">
-            <Topback/>
+            {(token != 'undefined') && <Topback/>}
             <div className="login-box">
                 <div className="login-top">
                     <div className="title"><span>stresslo</span></div>
