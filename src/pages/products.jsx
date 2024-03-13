@@ -38,14 +38,15 @@ const Products = () => {
         checkAdmin()
     }, [path, ctg])
 
+    if (status !== 200) return (
+        <div style={{marginTop: '80px'}}>
+            <Handle status={status}/>
+        </div>
+    )
+
     return (
         <>
-        {(status !== 200) && (
-            <div style={{marginTop: '80px'}}>
-                <Handle status={status}/>
-            </div>
-        )}
-        <div className='product-page'>
+        <div className='product-page' style={{marginTop: '10px'}}>
             <div className='product-container' style={{flexDirection: 'column'}}>
                 <div className='form' style={{marginTop: '10px'}}>
                     <div className='input-form'>
