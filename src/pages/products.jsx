@@ -12,7 +12,10 @@ import "../style/main.css"
 
 const Products = () => {
 
+    const path = location.pathname
+    const ctgHistory = localStorage.getItem('ctg')
     const navigate = useNavigate()
+    const [ ctg, setCtg] = useState(ctgHistory? ctgHistory : 'Web')
     const [ data, setData ] = useState([])
     const [ loading, setLoading ] = useState(false)
     const [ status, setStatus ] = useState(200)
@@ -21,7 +24,7 @@ const Products = () => {
     const checkAdmin = async () => {
         try {
             setLoading(true)
-            const response = await axios.get(`${import.meta.env.VITE_API}/waitinglist`,{
+            const response = await axios.get(`${import.meta.env.VITE_API}/waitinglist/${ctg}`,{
                 headers: { "authorization": `bearer ${token}` }
             })
             if (!response.data.length) return setStatus(404)
@@ -31,7 +34,9 @@ const Products = () => {
         } finally {setLoading(false)}
     };
 
-    useEffect(() => { checkAdmin() }, [])
+    useEffect(() => { 
+        if (!data.length) {checkAdmin()} 
+    }, [path])
 
     return (
         <>
@@ -42,7 +47,20 @@ const Products = () => {
         )}
         <div className='product-page'>
             <div className='product-container'>
+                <div className='input-form'>
+                <div>
+                <div>Category :</div>
+                    <select style={{width: '100%', textAlign: 'center'}} value={ctg} onChange={(e) => setCtg(e.target.value)} required>
+                        <option value="">-- CATEGORY --</option>
+                        <option value="Web">Web</option>
+                        <option value="3D">3D</option>
+                        <option value="Motion">Motion</option>
+                        <option value="Vector">Vector</option>
+                    </select>
+                </div>
+                </div>
                 {(loading) ? (<Swaload.Product/>) : 
+                data && 
                 data.map((i, k) => {
                         return(
                         <div className='product-card' key={k}>
