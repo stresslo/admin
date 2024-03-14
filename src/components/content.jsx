@@ -14,7 +14,7 @@ const Content = () => {
     const context = useContext(Context)
     const token = sessionStorage.getItem('token')
 
-    useEffect(() => {if (token == 'undefined') return navigate('/login')} ,[])
+    useEffect(() => {if (!token ||token == 'undefined') return window.location.href = '/login'} ,[path])
 
     return (
         <div className="content">
