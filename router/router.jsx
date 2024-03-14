@@ -24,7 +24,6 @@ const Routing = () => {
   }, [token])
 
   useEffect(() => {
-      if (token !== 'undefined') return location.href = '/login' 
       context.setLoading(true)
       axios.get(`${import.meta.env.VITE_API}/vxadm`)
       .then((response) => sessionStorage.setItem('token', response.data.token))
