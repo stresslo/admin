@@ -16,15 +16,15 @@ const Routing = () => {
   const [loading, setLoading] = useState(false)
   
   useEffect(() => {
-    if (token) {
+    if (token && token != 'undefined') {
       const decoded = jwt_decode(token)
-      console.log(decoded)
       setEmail(decoded.email)
       setExpires(decoded.exp)
     } 
   }, [token])
 
   useEffect(() => {
+      if (token !== 'undefined') return location.href = '/login' 
       context.setLoading(true)
       axios.get(`${import.meta.env.VITE_API}/vxadm`)
       .then((response) => sessionStorage.setItem('token', response.data.token))
