@@ -23,6 +23,22 @@ const Wetails = () => {
 
     const img = data.map((i) => { return i.img })
 
+    const donwload = (url) => {
+        try {
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${url}`);
+            document.body.appendChild(link);
+            link.click()
+            document.body.removeChild(link)
+            swalert('successfuly donwload product', 'success', 3000)
+            .then((res) => res.dismiss && backref.current.click())
+          } catch (error) {
+            error.response && swalert(error.response.data, 'info', 3000)
+            return false;
+          }
+    }
+
     const confirm = async () => {
         try {
             setLoading(true)
@@ -106,6 +122,7 @@ const Wetails = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className="button-max" onClick={() => donwload(i.file)} style={{ marginTop: '30px', backgroundColor: 'var(--yellow)' }}>Download & Review</div>
                         <div className="button-max" onClick={() => confirm()} style={{ marginTop: '30px', backgroundColor: 'var(--yellow)' }}>Approve</div>
                         <div className="button-max" onClick={() => reject()} style={{ marginTop: '5px', backgroundColor: '#aaa' }}>Reject</div>
                         </>
